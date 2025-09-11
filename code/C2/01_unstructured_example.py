@@ -1,12 +1,23 @@
+import os
+os.environ['HF_ENDPOINT'] = 'https://hf-mirror.com'
+os.environ['HF_HUB_ENABLE_HF_TRANSFER'] = '1'
 from unstructured.partition.auto import partition
+from unstructured.partition.pdf import partition_pdf
+
 
 # PDF文件路径
 pdf_path = "../../data/C2/pdf/rag.pdf"
 
 # 使用Unstructured加载并解析PDF文档
-elements = partition(
-    filename=pdf_path,
-    content_type="application/pdf"
+# elements = partition(
+#     filename=pdf_path,
+#     content_type="application/pdf"
+# )
+
+elements = partition_pdf(
+    pdf_path,
+    languages=["chi_sim", "eng"],
+    strategy="hi_res"
 )
 
 # 打印解析结果
