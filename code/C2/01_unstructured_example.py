@@ -17,7 +17,7 @@ pdf_path = "../../data/C2/pdf/rag.pdf"
 elements = partition_pdf(
     pdf_path,
     languages=["chi_sim", "eng"],
-    strategy="hi_res"
+    strategy="ocr_only"
 )
 
 # 打印解析结果
